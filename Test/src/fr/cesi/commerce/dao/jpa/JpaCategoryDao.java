@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import fr.cesi.commerce.dao.CategoryDao;
 import fr.cesi.commerce.entity.Category;
+import fr.cesi.commerce.entity.Product;
 
 public class JpaCategoryDao implements CategoryDao{
 	private EntityManagerFactory emf ;
@@ -34,9 +35,10 @@ public class JpaCategoryDao implements CategoryDao{
 	public void editCategory(Category c) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction t = em.getTransaction();	
+		Category category ;
 		try {
 			t.begin();
-			em.merge(c); 
+			category = em.merge(c); 
 			t.commit();
 		} finally {
 			if (t.isActive()) 

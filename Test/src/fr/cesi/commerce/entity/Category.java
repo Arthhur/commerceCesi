@@ -26,8 +26,8 @@ public class Category {
 	private String nom = "" ;
 	
 	 @OneToMany(cascade=CascadeType.ALL)
-	 @JoinTable(name="EMPLOYEE_ACCOUNT", joinColumns={@JoinColumn(name="EMPLOYEE_ID", referencedColumnName="id")}
-	    , inverseJoinColumns={@JoinColumn(name="ACCOUNT_ID", referencedColumnName="id")})
+	 @JoinTable(joinColumns={@JoinColumn(name="category_ID", referencedColumnName="id")}
+	    , inverseJoinColumns={@JoinColumn(name="product_ID", referencedColumnName="id")})
     private Collection<Product> products ;
 	 
 	public Category() {

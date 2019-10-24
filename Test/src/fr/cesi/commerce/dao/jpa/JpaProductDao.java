@@ -34,15 +34,16 @@ public class JpaProductDao implements ProductDao{
 	public void editProduct(Product p) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction t = em.getTransaction();	
+		Product product ;
 		try {
 			t.begin();
-			em.merge(p); 
+			product = em.merge(p); 
 			t.commit();
 		} finally {
 			if (t.isActive()) 
 				t.rollback();
 			em.close();
-		}
+		}		
 	}
 	public List<Product> getAllProducts() {
 		EntityManager em = emf.createEntityManager();
